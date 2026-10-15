@@ -1,1072 +1,545 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0C234B">
+  <meta name="description" content="Academic portfolio of Mahshad Akbarsharifi, graduate researcher in Electrical and Computer Engineering at the University of Arizona.">
+  <title>Mahshad Akbarsharifi | Research Portfolio — University of Arizona</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;500;600;650;700;750;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #0C234B;
+      --ink-strong: #0C234B;
+      --muted: #52657B;
+      --soft-muted: #8798AB;
+      --accent: #AB0520;
+      --accent-dark: #850000;
+      --accent-soft: #FDEBED;
+      --paper: #F6F8FB;
+      --white: #ffffff;
+      --line: #DCE4EE;
+      --shadow: 0 15px 40px rgba(12, 35, 75, .05);
+      --serif: "Libre Baskerville", Georgia, serif;
+      --sans: "Source Sans 3", "Segoe UI", Arial, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.72; -webkit-font-smoothing: antialiased; }
+    ::selection { background: #F2B9C2; color: var(--ink-strong); }
+    a { color: inherit; text-decoration: none; }
+    a:focus-visible, button:focus-visible { outline: 3px solid #C62840; outline-offset: 4px; }
+    button { font: inherit; }
+    .container { width: min(1160px, calc(100% - 72px)); margin-inline: auto; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 750; letter-spacing: .19em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; display: inline-block; width: 21px; height: 1px; background: currentColor; opacity: .75; }
 
-    <title>Mahshad Akbarsharifi</title>
-    <meta
-        name="description"
-        content="Academic portfolio of Mahshad Akbarsharifi, graduate researcher in Electrical and Computer Engineering at the University of Arizona."
-    >
+    /* Navigation */
+    .site-nav { position: sticky; top: 0; z-index: 50; background: rgba(250,251,248,.94); border-bottom: 1px solid rgba(221,230,226,.95); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
+    .nav-inner { min-height: 76px; display: flex; align-items: center; gap: 24px; justify-content: space-between; }
+    .wordmark { display: inline-flex; align-items: center; gap: 12px; white-space: nowrap; font-size: 14px; font-weight: 750; letter-spacing: -.035em; }
+    .wordmark-icon { display: grid; place-items: center; width: 34px; height: 34px; color: #e7ffef; background: var(--ink-strong); border-radius: 10px; font-family: var(--serif); font-size: 24px; font-style: italic; font-weight: 400; }
+    .nav-links { display: flex; align-items: center; gap: clamp(14px, 2.05vw, 29px); }
+    .nav-links a { font-size: 12px; color: #52636c; font-weight: 650; transition: color .2s ease; }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-cta { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 750; white-space: nowrap; border: 1px solid #d0ded7; padding: 9px 15px; border-radius: 100px; transition: background .2s, border-color .2s, transform .2s; }
+    .nav-cta:hover { background: var(--accent-soft); border-color: #b4dcd1; transform: translateY(-1px); }
+    .nav-cta svg, .btn svg, .project-arrow svg { width: 14px; height: 14px; }
+    .menu-button { display: none; align-items: center; justify-content: center; width: 42px; height: 42px; border: 1px solid var(--line); background: white; border-radius: 11px; color: var(--ink); cursor: pointer; }
+    .menu-button svg { width: 20px; height: 20px; }
 
-    <style>
-        :root {
-            --text: #1f2937;
-            --muted: #6b7280;
-            --primary: #2563eb;
-            --primary-dark: #1e40af;
-            --background: #ffffff;
-            --soft-background: #f8fafc;
-            --border: #e5e7eb;
-        }
+    /* Hero */
+    .hero { isolation: isolate; position: relative; overflow: hidden; background: var(--ink-strong); color: #eef8f2; }
+    .hero::before { content: ""; position: absolute; inset: 0; opacity: .31; pointer-events: none; background-image: linear-gradient(rgba(181, 237, 221,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(181, 237, 221,.07) 1px, transparent 1px); background-size: 61px 61px; mask-image: linear-gradient(90deg,transparent,black 65%); z-index: -1; }
+    .hero::after { content: ""; position: absolute; width: 690px; height: 690px; right: -170px; top: -250px; background: radial-gradient(circle, rgba(27,161,136,.20), transparent 67%); pointer-events: none; z-index: -1; }
+    .hero-layout { display: grid; grid-template-columns: 1.22fr .78fr; gap: 70px; align-items: center; padding-top: 109px; padding-bottom: 111px; }
+    .hero .eyebrow { color: #a2dfce; margin-bottom: 26px; }
+    .hero h1 { font-family: var(--serif); font-size: clamp(76px, 8.7vw, 132px); font-weight: 400; letter-spacing: -.065em; line-height: .88; margin: 0 0 31px; }
+    .hero h1 em { color: #8ed9c2; font-weight: 400; }
+    .hero-role { font-size: clamp(17px, 2.1vw, 23px); letter-spacing: -.025em; line-height: 1.42; max-width: 650px; margin: 0 0 19px; font-weight: 500; }
+    .hero-description { max-width: 610px; margin: 0; color: #b4c7c8; font-size: 14px; line-height: 1.85; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 34px; }
+    .btn { display: inline-flex; align-items: center; gap: 13px; justify-content: center; border: 1px solid transparent; border-radius: 100px; padding: 12px 19px; font-size: 12px; font-weight: 750; transition: transform .2s, background .2s, border-color .2s; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: #91e0c8; color: var(--ink-strong); }
+    .btn-primary:hover { background: #b3f0da; }
+    .btn-outline { border-color: rgba(217,242,231,.35); color: #effcf6; background: rgba(255,255,255,.035); }
+    .btn-outline:hover { border-color: #91e0c8; background: rgba(255,255,255,.07); }
+    .hero-art { position: relative; min-height: 434px; display: flex; align-items: center; justify-content: center; }
+    .orbit { width: min(100%, 397px); aspect-ratio: 1; position: relative; display: grid; place-items: center; border: 1px solid rgba(161,224,210,.25); border-radius: 50%; background: radial-gradient(circle at center, rgba(103,228,198,.09), transparent 68%); }
+    .orbit::before, .orbit::after { content: ""; position: absolute; border: 1px solid rgba(161,224,210,.2); border-radius: 50%; }
+    .orbit::before { inset: 36px; }
+    .orbit::after { inset: 84px; }
+    .orbit-center { z-index: 2; display: grid; place-items: center; width: 136px; height: 136px; background: #193e42; border: 1px solid rgba(131,220,197,.45); color: #c4f4e0; border-radius: 50%; text-align: center; font-family: var(--serif); font-style: italic; font-size: 35px; line-height: .97; letter-spacing: -.035em; box-shadow: 0 0 90px #147a6630; }
+    .orbit-node { position: absolute; z-index: 3; padding: 8px 13px; border: 1px solid rgba(167,222,213,.26); border-radius: 100px; background: #1e363b; color: #d6ede5; font-size: 10px; font-weight: 700; letter-spacing: .01em; white-space: nowrap; box-shadow: 0 8px 24px rgba(0,0,0,.18); }
+    .node-one { top: 11%; left: -8%; }
+    .node-two { top: 22%; right: -14%; }
+    .node-three { bottom: 20%; left: -10%; }
+    .node-four { bottom: 8%; right: 2%; }
+    .orbit-point { width: 9px; height: 9px; position: absolute; border-radius: 50%; background: #a8ebd5; box-shadow: 0 0 0 7px rgba(151,222,194,.10); }
+    .point-one { left: 18%; top: 18%; }
+    .point-two { right: 18%; bottom: 18%; }
+    .hero-index { position: absolute; right: 0; bottom: -53px; display: flex; align-items: center; gap: 12px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .15em; color: #8baea9; }
+    .hero-index span { width: 42px; height: 1px; background: #8baea9; }
 
-        * {
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
+    /* Page-wide sections */
+    main > section { padding: 100px 0; scroll-margin-top: 78px; }
+    main > section:nth-child(even) { background: var(--white); }
+    .section-top { display: grid; grid-template-columns: 225px 1fr; gap: 35px; margin-bottom: 43px; align-items: baseline; }
+    .section-label { display: flex; align-items: center; gap: 14px; font-size: 10px; font-weight: 750; color: var(--accent); letter-spacing: .16em; text-transform: uppercase; }
+    .section-label .number { color: #93a29e; font-variant-numeric: tabular-nums; }
+    h2 { font-family: var(--serif); font-size: clamp(47px, 5vw, 67px); font-weight: 400; letter-spacing: -.055em; line-height: 1; margin: 0; }
+    h2 em { color: var(--accent); font-weight: 400; }
+    .section-description { max-width: 640px; margin: 17px 0 0; font-size: 14px; line-height: 1.8; color: var(--muted); }
 
-        body {
-            margin: 0;
-            font-family:
-                -apple-system,
-                BlinkMacSystemFont,
-                "Segoe UI",
-                Roboto,
-                Helvetica,
-                Arial,
-                sans-serif;
+    /* About */
+    .about-content { display: grid; grid-template-columns: 1.22fr .78fr; gap: 66px; align-items: start; }
+    .about-copy { max-width: 620px; }
+    .about-copy p { font-size: 16px; line-height: 1.95; margin: 0 0 22px; color: #42545a; }
+    .interest-panel { background: #eaf2ed; border: 1px solid #e1ebe4; border-radius: 17px; padding: 28px; }
+    .panel-kicker { font-size: 10px; text-transform: uppercase; font-weight: 750; letter-spacing: .16em; color: var(--accent); margin: 0 0 18px; }
+    .interest-list { display: flex; flex-wrap: wrap; gap: 9px; }
+    .interest-list span { border-radius: 100px; border: 1px solid #c9dcd4; background: rgba(255,255,255,.64); color: #345b57; font-size: 11px; font-weight: 650; padding: 7px 12px; }
 
-            color: var(--text);
-            background: var(--background);
-            line-height: 1.7;
-        }
+    /* Education */
+    .education-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+    .education-card { display: flex; flex-direction: column; min-height: 340px; padding: 30px; border: 1px solid var(--line); border-radius: 18px; background: var(--white); box-shadow: var(--shadow); }
+    .card-kicker { display: flex; justify-content: space-between; gap: 10px; align-items: center; margin-bottom: 30px; color: var(--accent); font-size: 10px; font-weight: 750; letter-spacing: .12em; text-transform: uppercase; }
+    .card-kicker time { color: var(--muted); font-weight: 600; letter-spacing: 0; text-transform: none; font-size: 12px; }
+    .education-card h3 { font-size: 23px; line-height: 1.25; letter-spacing: -.04em; margin: 0 0 12px; font-weight: 650; }
+    .university { color: var(--muted); font-size: 13px; margin: 0; }
+    .education-bottom { display: flex; gap: 15px; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 28px; }
+    .gpa-badge { display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: 7px; color: var(--ink); background: var(--accent-soft); padding: 9px 13px; border-radius: 9px; white-space: nowrap; }
+    .gpa-badge strong { font-size: 14px; }
+    .gpa-badge small { font-size: 10px; color: var(--accent-dark); }
+    .coursework { margin-top: 24px; border-top: 1px solid var(--line); padding-top: 20px; }
+    .coursework strong { display: block; margin-bottom: 7px; font-size: 11px; text-transform: uppercase; letter-spacing: .11em; }
+    .coursework p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.85; }
 
-        a {
-            color: var(--primary);
-            text-decoration: none;
-        }
+    /* Experience */
+    .experience-layout { display: grid; grid-template-columns: 1.08fr .92fr; gap: 28px; }
+    .experience-main { background: var(--ink-strong); color: #eff7f2; border-radius: 18px; padding: 32px; min-height: 360px; display: flex; flex-direction: column; }
+    .experience-main .card-kicker { color: #8de2c6; }
+    .experience-main .card-kicker time { color: #b7c5c4; }
+    .experience-main h3 { margin: 22px 0 9px; font-family: var(--serif); font-size: 41px; font-weight: 400; line-height: 1.1; letter-spacing: -.035em; }
+    .experience-main h4 { font-size: 13px; font-weight: 600; color: #91e0c8; margin: 0 0 22px; }
+    .experience-main p { max-width: 480px; margin: 0; color: #bfcecc; line-height: 1.85; font-size: 13px; }
+    .experience-main .big-chevron { margin-top: auto; align-self: flex-end; width: 43px; height: 43px; border: 1px solid #59726c; border-radius: 50%; display: grid; place-items: center; color: #b4ead8; font-size: 23px; }
+    .experience-list { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
+    .experience-item { display: grid; grid-template-columns: 1fr auto; gap: 10px; padding: 21px 0; border-bottom: 1px solid var(--line); }
+    .experience-item h3 { margin: 0; font-size: 14px; font-weight: 700; line-height: 1.45; letter-spacing: -.015em; }
+    .experience-item time { white-space: nowrap; color: var(--muted); font-size: 10px; text-align: right; line-height: 1.5; }
 
-        a:hover {
-            color: var(--primary-dark);
-            text-decoration: underline;
-        }
+    /* Publications */
+    .publication-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 22px; }
+    .publication-card { display: flex; flex-direction: column; padding: 31px; border: 1px solid var(--line); background: #fff; border-radius: 18px; min-height: 335px; }
+    .publication-tag { width: fit-content; padding: 6px 11px; border-radius: 100px; font-size: 10px; font-weight: 750; color: var(--accent-dark); background: var(--accent-soft); }
+    .publication-card h3 { margin: 28px 0 10px; max-width: 440px; font-family: var(--serif); font-size: 32px; font-weight: 400; line-height: 1.13; letter-spacing: -.025em; }
+    .pub-venue { color: var(--accent-dark); font-size: 12px; font-weight: 700; margin-bottom: 11px; }
+    .publication-card p { font-size: 12px; color: var(--muted); line-height: 1.83; margin: 0 0 22px; }
+    .pub-foot { display: flex; align-items: center; gap: 8px; margin-top: auto; padding-top: 18px; border-top: 1px solid var(--line); font-size: 11px; font-weight: 650; color: #768580; }
 
-        .container {
-            width: min(1050px, 90%);
-            margin: auto;
-        }
+    /* Projects */
+    .project-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 19px; }
+    .project-card { position: relative; display: flex; flex-direction: column; background: #fff; border: 1px solid var(--line); border-radius: 17px; padding: 28px 29px 26px; min-height: 259px; transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+    .project-card:hover { transform: translateY(-4px); border-color: #c5dcd3; box-shadow: 0 20px 45px rgba(18,50,54,.07); }
+    .project-card.featured { border-color: #b9d9ca; background: linear-gradient(140deg, #f3faf6, #fff 70%); }
+    .project-upper { display: flex; align-items: center; justify-content: space-between; gap: 15px; margin-bottom: 19px; }
+    .project-number { color: var(--accent); letter-spacing: .1em; font-size: 10px; font-weight: 750; }
+    .project-category { font-size: 10px; font-weight: 700; color: #7d9088; }
+    .project-card h3 { font-size: 20px; letter-spacing: -.045em; line-height: 1.25; font-weight: 700; margin: 0 0 12px; max-width: 470px; }
+    .project-card p { color: #66757b; font-size: 12px; line-height: 1.85; margin: 0 0 21px; }
+    .tech-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: auto; }
+    .tech-tags span { display: inline-flex; padding: 5px 9px; border-radius: 6px; color: #4d6761; background: #eff4f1; font-size: 10px; font-weight: 700; }
 
-        /* NAVIGATION */
+    /* Skills */
+    .skills-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+    .skill-box { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 25px; min-height: 184px; }
+    .skill-icon { display: inline-grid; place-items: center; background: var(--accent-soft); color: var(--accent); border-radius: 11px; width: 38px; height: 38px; margin-bottom: 19px; font-size: 18px; }
+    .skill-box h3 { margin: 0 0 9px; font-size: 14px; font-weight: 750; letter-spacing: -.025em; }
+    .skill-box p { color: var(--muted); font-size: 12px; margin: 0; line-height: 1.85; }
 
-        nav {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(255, 255, 255, 0.95);
-            border-bottom: 1px solid var(--border);
-            backdrop-filter: blur(10px);
-        }
+    /* Honors */
+    .awards-list { border-top: 1px solid var(--line); }
+    .award { display: grid; grid-template-columns: 100px 1fr 30px; gap: 25px; align-items: baseline; border-bottom: 1px solid var(--line); padding: 20px 7px; transition: background .2s, padding .2s; }
+    .award:hover { background: #edf5f0; padding-left: 16px; padding-right: 16px; }
+    .award-year { font-family: var(--serif); font-size: 26px; color: var(--accent); letter-spacing: -.04em; line-height: 1; }
+    .award-description { font-weight: 550; letter-spacing: -.01em; font-size: 14px; }
+    .award-symbol { color: #99a9a0; font-size: 15px; justify-self: end; }
 
-        .nav-container {
-            width: min(1050px, 90%);
-            margin: auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            min-height: 65px;
-        }
+    /* Languages + Footer */
+    #languages { padding-top: 83px; padding-bottom: 88px; }
+    .language-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; }
+    .language-card { padding: 23px 27px; background: #fff; border: 1px solid var(--line); border-radius: 14px; display: flex; align-items: center; justify-content: space-between; }
+    .language-card h3 { margin: 0; font-size: 17px; }
+    .language-card span { font-size: 11px; color: var(--accent-dark); font-weight: 750; background: var(--accent-soft); padding: 6px 11px; border-radius: 100px; }
+    .site-footer { background: var(--ink-strong); color: #dcece3; padding: 49px 0 33px; }
+    .footer-top { display: flex; justify-content: space-between; align-items: end; gap: 25px; padding-bottom: 40px; }
+    .footer-top h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(37px,5vw,59px); line-height: 1.1; letter-spacing: -.045em; margin: 12px 0 0; }
+    .footer-top h2 em { color: #93e4c9; }
+    .site-footer .eyebrow { color: #95dcca; }
+    .footer-bottom { border-top: 1px solid #385058; padding-top: 25px; display: flex; justify-content: space-between; gap: 16px; color: #9aafae; font-size: 11px; }
+    .footer-bottom a { color: #b8ebd9; text-decoration: underline; text-underline-offset: 4px; }
 
-        .nav-name {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--text);
-        }
+    @media(max-width: 1050px) {
+      .nav-links { gap: 14px; }
+      .nav-links a { font-size: 11px; }
+      .nav-cta { display: none; }
+      .hero-layout { gap: 25px; }
+      .hero-art { min-height: 370px; }
+      .orbit { max-width: 300px; }
+      .node-one { left: -5%; } .node-two { right: -5%; } .node-three { left: -6%; }
+      .section-top { grid-template-columns: 160px 1fr; }
+      .experience-layout { grid-template-columns: 1fr 1fr; }
+    }
+    @media(max-width: 800px) {
+      .container { width: min(100% - 40px, 660px); }
+      .nav-inner { min-height: 67px; position: relative; }
+      .menu-button { display: inline-flex; }
+      .nav-links { display: none; position: absolute; left: -1px; right: -1px; top: calc(100% + 1px); background: #fbfcfa; border: 1px solid var(--line); box-shadow: 0 20px 35px rgba(0,0,0,.07); border-radius: 0 0 14px 14px; padding: 12px 20px 20px; flex-direction: column; align-items: stretch; gap: 1px; }
+      .nav-links.is-open { display: flex; }
+      .nav-links a { font-size: 14px; padding: 10px 0; }
+      .hero-layout { grid-template-columns: 1fr; padding: 82px 0 74px; }
+      .hero h1 { font-size: clamp(75px, 15vw, 116px); }
+      .hero-art { display: none; }
+      main > section { padding: 75px 0; }
+      .section-top { grid-template-columns: 1fr; gap: 16px; margin-bottom: 31px; }
+      .about-content { grid-template-columns: 1fr; gap: 20px; }
+      .education-grid, .experience-layout, .publication-grid, .project-grid, .language-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: repeat(2,1fr); }
+      .education-card { min-height: 0; }
+      .experience-main { min-height: 300px; }
+      .experience-item { grid-template-columns: 1fr; }
+      .experience-item time { text-align: left; }
+      .publication-card, .project-card { min-height: 0; }
+    }
+    @media(max-width: 520px) {
+      .container { width: calc(100% - 36px); }
+      .hero-layout { padding: 73px 0 72px; }
+      .hero h1 { font-size: clamp(62px, 16vw, 82px); }
+      .hero-role { font-size: 18px; }
+      .hero-description { font-size: 13px; }
+      .btn { padding: 11px 15px; }
+      main > section { padding: 64px 0; }
+      h2 { font-size: 49px; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .award { grid-template-columns: 58px 1fr; gap: 14px; }
+      .award-symbol { display: none; }
+      .award-year { font-size: 23px; }
+      .award-description { font-size: 13px; }
+      .education-card, .publication-card, .project-card { padding: 24px; }
+      .footer-top { flex-direction: column; align-items: start; }
+      .footer-bottom { flex-direction: column; gap: 7px; }
+    }
+    @media(prefers-reduced-motion:reduce) { html { scroll-behavior: auto; } *,*::before,*::after { transition: none !important; animation: none !important; } }
 
-        .nav-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 22px;
-        }
 
-        .nav-links a {
-            color: var(--text);
-            font-size: 14px;
-            font-weight: 500;
-        }
+    .skip-link { position:fixed; top:-70px; left:12px; z-index:500; background:white; color:#0C234B; padding:10px 16px; font-weight:700; border:2px solid #AB0520; }
+    .skip-link:focus { top:9px; }
 
-        /* HERO */
+    /* ────────────────────────────────────────────────────────────
+       UNIVERSITY OF ARIZONA–INSPIRED PERSONAL PORTFOLIO THEME
+       Primary palette: Arizona Blue #0C234B / Arizona Red #AB0520.
+       This is an independent student website, not an official UA site.
+       ──────────────────────────────────────────────────────────── */
+    body { color: var(--ink); background: var(--paper); font-size: 16px; line-height: 1.7; }
+    h1,h2,h3 { text-wrap: balance; }
+    p { text-wrap: pretty; }
+    .container { width: min(1160px, calc(100% - 76px)); }
+    .site-nav { background: rgba(255,255,255,.97); border-bottom-color: #DDE5EE; }
+    .site-nav::before { content:""; position:absolute; inset:0 0 auto; height:4px; background: var(--accent); }
+    .nav-inner { min-height: 79px; padding-top: 4px; }
+    .wordmark { color: var(--ink); font-size: 16px; letter-spacing: -.02em; font-weight: 800; }
+    .wordmark-icon { width: 36px; height: 36px; font-family: var(--serif); font-size: 20px; font-style: normal; font-weight: 700; border-radius: 6px; color: #fff; background: var(--accent); }
+    .nav-links a { color: #344A66; font-size: 12px; font-weight: 700; }
+    .nav-links a:hover, .nav-links a[aria-current="location"] { color: var(--accent); }
+    .nav-cta { color: var(--ink); border-color: #BBC8D8; border-radius: 7px; font-size: 12px; }
+    .nav-cta:hover { color: var(--accent); background: #FDEBED; border-color: #E9BAC3; }
+    .menu-button { border-radius: 7px; }
 
-        .hero {
-            padding: 100px 0 80px;
-            background: var(--soft-background);
-            border-bottom: 1px solid var(--border);
-        }
+    .hero { background: var(--ink-strong); color: #fff; border-bottom: 6px solid var(--accent); }
+    .hero::before { opacity: .48; background-image: linear-gradient(rgba(200,221,249,.08) 1px,transparent 1px), linear-gradient(90deg,rgba(200,221,249,.08) 1px,transparent 1px); background-size: 58px 58px; }
+    .hero::after { width: 780px; height: 780px; top:-210px; right:-130px; background: radial-gradient(circle,rgba(30,82,136,.34),transparent 64%); }
+    .hero-layout { padding-top: 105px; padding-bottom: 111px; }
+    .hero .eyebrow { color: #DCE9FA; font-size: 11px; font-weight: 800; letter-spacing: .15em; }
+    .hero .eyebrow::before { background: #EC153C; width: 24px; height: 3px; opacity: 1; }
+    .hero h1 { font-size: clamp(65px,7.2vw,109px); line-height: 1.08; letter-spacing: -.062em; font-weight: 700; margin-bottom: 29px; }
+    .hero h1 em { color: #fff; font-style: normal; font-weight: 700; }
+    .hero-role { font-size: clamp(17px,2vw,22px); line-height:1.44; font-weight: 650; }
+    .hero-description { color: #D8E1EF; max-width: 605px; font-size: 15px; line-height: 1.78; }
+    .hero-actions { margin-top: 36px; }
+    .btn { border-radius: 8px; padding: 13px 20px; font-weight: 750; font-size: 13px; }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: #C62840; color: #fff; }
+    .btn-outline { color:#fff; border-color:rgba(231,240,252,.53); background:rgba(255,255,255,.04); }
+    .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,.12); }
+    .orbit { border-color:rgba(207,227,252,.32); background:radial-gradient(circle at center,rgba(118,160,220,.12),transparent 68%); }
+    .orbit::before,.orbit::after { border-color:rgba(207,227,252,.28); }
+    .orbit-center { width: 151px; height:151px; border-radius: 50%; background: #173A6F; border: 2px solid #AFC8EB; font-size: 27px; font-family: var(--serif); font-weight: 700; font-style: normal; color:#fff; letter-spacing:-.03em; box-shadow:0 0 90px rgba(74,125,187,.23); }
+    .orbit-node { color: #fff; background: #183961; border-color: #4E729F; font-size: 11px; }
+    .orbit-point { background: #F0445D; box-shadow: 0 0 0 7px rgba(240,68,93,.15); }
+    .hero-index { color: #C0D3EF; letter-spacing:.10em; font-size:10px; }
+    .hero-index span { background: #EC153C; height:2px; }
 
-        .hero-content {
-            max-width: 820px;
-        }
+    main > section { padding: 91px 0; }
+    main > section:nth-child(even) { background: #fff; }
+    .section-top { margin-bottom: 40px; }
+    .section-label { color:var(--accent); font-weight:800; }
+    .section-label .number { color: #7488A4; }
+    h2 { color: var(--ink); font-size: clamp(37px,4vw,55px); line-height:1.2; letter-spacing:-.042em; font-weight:700; }
+    h2 em { font-style:normal; color: var(--accent); font-weight:700; }
+    .section-description { color: #546781; font-size:15px; }
+    .about-copy p { color:#304766; font-size:17px; line-height:1.83; }
+    .interest-panel { background:#E5EFF7; border-color:#D7E5F1; border-radius: 12px; }
+    .panel-kicker { color:var(--accent); }
+    .interest-list span { color:#284568; background:#fff; border-color:#CADAE9; border-radius:5px; font-size:12px; }
 
-        .hero h1 {
-            font-size: clamp(42px, 7vw, 68px);
-            line-height: 1.1;
-            margin: 0 0 20px;
-            letter-spacing: -1.5px;
-        }
+    .education-card,.publication-card,.project-card,.skill-box,.language-card { border-color:#DBE4EF; border-radius: 11px; }
+    .education-card { box-shadow: var(--shadow); }
+    .education-card:first-child { border-top:4px solid var(--accent); }
+    .education-card:nth-child(2) { border-top:4px solid var(--ink); }
+    .card-kicker { color:var(--accent); }
+    .education-card h3 { color:var(--ink); font-size:21px; }
+    .gpa-badge { border-radius: 6px; }
+    .gpa-badge small { color:var(--accent-dark); }
+    .coursework strong { color:var(--ink); }
+    .experience-main { background:#0C234B; border-radius: 11px; border-top:5px solid var(--accent); color:white; }
+    .experience-main .card-kicker { color:#FADDE3; }
+    .experience-main .card-kicker time { color:#D6E1F0; }
+    .experience-main h3 { font-size:clamp(29px,3vw,37px); line-height:1.27; letter-spacing:-.04em; font-weight:700; }
+    .experience-main h4 { color:#F7CFD6; }
+    .experience-main p { color:#D9E4F2; font-size:14px; }
+    .experience-main .big-chevron { color:#fff; border-color:#6B83A7; }
+    .experience-item h3 { color:var(--ink); }
+    .publication-card { border-top:4px solid #AB0520; }
+    .publication-card:nth-child(2) { border-top-color:#0C234B; }
+    .publication-tag { border-radius:5px; font-size:11px; color:#850000; }
+    .publication-card h3 { color:var(--ink); font-size:clamp(23px,2.5vw,29px); font-weight:700; line-height:1.38; letter-spacing:-.035em; }
+    .pub-venue { color:var(--accent-dark); font-size:13px; }
+    .publication-card p { color:#536983; font-size:13px; }
+    .pub-foot { color:#506580; }
 
-        .hero-title {
-            font-size: 22px;
-            font-weight: 500;
-            margin-bottom: 18px;
-        }
-
-        .hero-description {
-            color: var(--muted);
-            font-size: 18px;
-            max-width: 760px;
-        }
-
-        .hero-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 30px;
-        }
-
-        .button {
-            display: inline-block;
-            padding: 10px 18px;
-            border-radius: 7px;
-            border: 1px solid var(--border);
-            font-weight: 600;
-            font-size: 14px;
-        }
-
-        .button-primary {
-            background: var(--primary);
-            border-color: var(--primary);
-            color: white;
-        }
-
-        .button-primary:hover {
-            background: var(--primary-dark);
-            color: white;
-            text-decoration: none;
-        }
-
-        .button-secondary {
-            background: white;
-            color: var(--text);
-        }
-
-        .button-secondary:hover {
-            text-decoration: none;
-            border-color: var(--primary);
-        }
-
-        /* SECTIONS */
-
-        section {
-            padding: 75px 0;
-        }
-
-        section:nth-of-type(even) {
-            background: var(--soft-background);
-        }
-
-        .section-title {
-            font-size: 34px;
-            margin-top: 0;
-            margin-bottom: 40px;
-            letter-spacing: -0.5px;
-        }
-
-        .section-intro {
-            color: var(--muted);
-            max-width: 750px;
-            margin-top: -25px;
-            margin-bottom: 40px;
-        }
-
-        /* CARDS */
-
-        .card {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 26px;
-            margin-bottom: 20px;
-        }
-
-        .card h3 {
-            margin-top: 0;
-            margin-bottom: 5px;
-            font-size: 21px;
-        }
-
-        .card h4 {
-            margin: 0 0 8px;
-            font-size: 16px;
-            font-weight: 600;
-        }
-
-        .date {
-            color: var(--muted);
-            font-size: 14px;
-            margin-bottom: 14px;
-        }
-
-        .card p:last-child {
-            margin-bottom: 0;
-        }
-
-        /* EDUCATION */
-
-        .education-title {
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .gpa {
-            font-weight: 600;
-        }
-
-        .course-list {
-            color: var(--muted);
-            font-size: 15px;
-        }
-
-        /* PROJECTS */
-
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 20px;
-        }
-
-        .project-card {
-            margin: 0;
-        }
-
-        .project-tech {
-            color: var(--primary);
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-
-        .project-link {
-            display: inline-block;
-            margin-top: 8px;
-            font-weight: 600;
-        }
-
-        /* SKILLS */
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 20px;
-        }
-
-        .skill-box {
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 20px;
-        }
-
-        .skill-box h3 {
-            margin-bottom: 5px;
-            font-size: 17px;
-        }
-
-        .skill-box p {
-            color: var(--muted);
-            margin-top: 0;
-        }
-
-        /* AWARDS */
-
-        .award {
-            display: grid;
-            grid-template-columns: 70px 1fr;
-            gap: 20px;
-            padding: 14px 0;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .award-year {
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        /* FOOTER */
-
-        footer {
-            border-top: 1px solid var(--border);
-            padding: 40px 0;
-            text-align: center;
-            color: var(--muted);
-            font-size: 14px;
-        }
-
-        /* MOBILE */
-
-        @media (max-width: 750px) {
-
-            .nav-container {
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 15px 0;
-                gap: 10px;
-            }
-
-            .nav-links {
-                gap: 12px;
-            }
-
-            .hero {
-                padding: 70px 0 60px;
-            }
-
-            .project-grid,
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-
-            section {
-                padding: 55px 0;
-            }
-        }
-    </style>
+    .project-card { border-radius:11px; }
+    .project-card:hover { border-color:#B8C9DC; box-shadow:0 18px 38px rgba(12,35,75,.11); }
+    .project-card.featured { background:linear-gradient(145deg,#FFF6F7,#fff 68%); border-color:#EFC5CD; }
+    .project-number { color:var(--accent); }
+    .project-category { color:#60738C; }
+    .project-card h3 { color:var(--ink); font-weight:750; }
+    .project-card p { color:#526780; font-size:13px; }
+    .tech-tags span { background:#EAF0F7; color:#26486F; border-radius:4px; font-size:11px; }
+    .skill-box { border-top:3px solid #D5E1ED; }
+    .skill-box:nth-child(2),.skill-box:nth-child(5) { border-top-color: #AB0520; }
+    .skill-icon { background:#E5EFF7; color:var(--accent); border-radius:7px; }
+    .skill-box h3 { color:var(--ink); font-size:15px; }
+    .skill-box p { font-size:13px; }
+    .award:hover { background:#E5EFF7; }
+    .award-year { color:var(--accent); font-size:22px; font-weight:700; }
+    .award-description { color:var(--ink); }
+    .award-symbol { color:#8195AA; }
+    .language-card { border-radius:10px; }
+    .language-card span { color:var(--accent-dark); border-radius:5px; }
+    .site-footer { background:var(--ink-strong); color:#fff; border-top:6px solid var(--accent); }
+    .site-footer .eyebrow { color:#CEDFF3; }
+    .footer-top h2 { color:#fff; font-size:clamp(31px,4.2vw,51px); font-weight:700; line-height:1.25; }
+    .footer-top h2 em { color:#fff; font-style:normal; }
+    .footer-bottom { color:#D3DEEE; border-top-color:#38577E; }
+    .footer-bottom a { color:#fff; }
+    @media(max-width:800px) {
+      .container { width:min(100% - 40px,660px); }
+      .nav-links { background:#fff; }
+      .hero-layout { padding:75px 0; }
+      .hero h1 { font-size:clamp(55px,11vw,85px); }
+      .hero-role { font-size:19px; }
+      main > section { padding:70px 0; }
+      .section-top { gap:15px; }
+    }
+    @media(max-width:520px) {
+      .container { width:calc(100% - 34px); }
+      .hero h1 { font-size:clamp(45px,11.7vw,64px); }
+      h2 { font-size:clamp(34px,9vw,43px); }
+      .hero .eyebrow { font-size:10px; letter-spacing:.1em; }
+      .nav-inner { min-height:67px; }
+    }
+  </style>
 </head>
-
 <body>
-
-<!-- NAVIGATION -->
-
-<nav>
-    <div class="nav-container">
-
-        <a class="nav-name" href="#">
-            Mahshad Akbarsharifi
-        </a>
-
-        <div class="nav-links">
-            <a href="#about">About</a>
-            <a href="#education">Education</a>
-            <a href="#experience">Experience</a>
-            <a href="#publications">Publications</a>
-            <a href="#projects">Projects</a>
-            <a href="#skills">Skills</a>
-            <a href="#awards">Awards</a>
-        </div>
-
+  <a class="skip-link" href="#about">Skip to content</a>
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <a class="wordmark" href="#top" aria-label="Mahshad Akbarsharifi, back to top"><span class="wordmark-icon" aria-hidden="true">M</span><span>Mahshad Akbarsharifi</span></a>
+      <div class="nav-links" id="nav-links">
+        <a href="#about">About</a><a href="#education">Education</a><a href="#experience">Experience</a><a href="#publications">Publications</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#awards">Honors</a>
+      </div>
+      <a class="nav-cta" href="https://github.com/xhpmoonx" target="_blank" rel="noopener noreferrer">GitHub <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+      <button class="menu-button" type="button" aria-controls="nav-links" aria-expanded="false" aria-label="Open navigation menu"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
     </div>
-</nav>
+  </nav>
 
-
-<!-- HERO -->
-
-<header class="hero">
-
-    <div class="container hero-content">
-
-        <h1>Mahshad Akbarsharifi</h1>
-
-        <div class="hero-title">
-            Graduate Researcher in Electrical & Computer Engineering
+  <header class="hero" id="top">
+    <div class="container hero-layout">
+      <div class="hero-copy">
+        <span class="eyebrow">UNIVERSITY OF ARIZONA · RESEARCH &amp; ENGINEERING</span>
+        <h1>Mahshad<br><em>Akbarsharifi.</em></h1>
+        <p class="hero-role">Graduate Researcher in Electrical &amp; Computer Engineering</p>
+        <p class="hero-description">M.S. student at the University of Arizona with a background in mathematics. Exploring machine learning, computer vision, educational data analytics, simulation, and intelligent systems.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#projects">Explore my work <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+          <a class="btn btn-outline" href="https://github.com/xhpmoonx" target="_blank" rel="noopener noreferrer">GitHub profile <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
         </div>
-
-        <p class="hero-description">
-            M.S. student in Electrical and Computer Engineering at the
-            University of Arizona with a background in mathematics.
-            My work focuses on machine learning, computer vision,
-            educational data analytics, simulation, and intelligent systems.
-        </p>
-
-        <div class="hero-links">
-
-            <a
-                class="button button-primary"
-                href="https://github.com/xhpmoonx"
-                target="_blank"
-            >
-                GitHub
-            </a>
-
-
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="orbit">
+          <div class="orbit-center">AI<br>&amp; systems</div>
+          <span class="orbit-node node-one">Computer vision</span>
+          <span class="orbit-node node-two">Machine learning</span>
+          <span class="orbit-node node-three">Data analytics</span>
+          <span class="orbit-node node-four">Simulation</span>
+          <span class="orbit-point point-one"></span><span class="orbit-point point-two"></span>
         </div>
-
+        <div class="hero-index"><span></span>University of Arizona · 2025—Present</div>
+      </div>
     </div>
+  </header>
 
-</header>
-
-
-<!-- ABOUT -->
-
-<section id="about">
-
-    <div class="container">
-
-        <h2 class="section-title">About Me</h2>
-
-        <p>
-            Mahshad Akbarsharifi is a graduate student in Electrical and Computer Engineering
-            at the University of Arizona. Her academic background combines
-            mathematics, machine learning, computer vision, optimization,
-            data science, and software development.
-        </p>
-
-        <p>
-            Her current research interests include computer vision for autonomous systems,
-            machine learning, knowledge removal and model adaptation, trajectory analysis and
-            prediction, educational data analytics, curricular analytics, simulation, and multimodal AI.
-        </p>
-
-    </div>
-
-</section>
-
-
-<!-- EDUCATION -->
-
-<section id="education">
-
-    <div class="container">
-
-        <h2 class="section-title">Education</h2>
-
-        <div class="card">
-
-            <div class="education-title">
-                <div>
-                    <h3>
-                        M.S. in Electrical and Computer Engineering
-                    </h3>
-                    <h4>University of Arizona</h4>
-                </div>
-
-                <strong>2025 – Present</strong>
-            </div>
-
-            <p class="gpa">
-                GPA: 4.0 / 4.0
-            </p>
-
-            <p class="course-list">
-                Selected Coursework:
-                Introduction to Artificial Intelligence,
-                Data Management,
-                Web Development and IoT,
-                Introduction to Deep Learning,
-                Engineering Applications of Machine Learning and Data Analytics
-            </p>
-
+  <main>
+    <section id="about">
+      <div class="container">
+        <div class="section-top"><span class="section-label"><span class="number">01 /</span> Introduction</span><h2>About <em>me.</em></h2></div>
+        <div class="about-content">
+          <div class="about-copy">
+            <p>Mahshad Akbarsharifi is a graduate student in Electrical and Computer Engineering at the University of Arizona. Her academic background brings together mathematics, machine learning, computer vision, optimization, data science, and software development.</p>
+            <p>Her current research interests include computer vision for autonomous systems, machine learning, knowledge removal and model adaptation, trajectory analysis and prediction, educational data analytics, curricular analytics, simulation, and multimodal AI.</p>
+          </div>
+          <aside class="interest-panel" aria-label="Research interests">
+            <p class="panel-kicker">Areas of interest</p>
+            <div class="interest-list"><span>Machine Learning</span><span>Computer Vision</span><span>LLM Unlearning</span><span>Autonomous Systems</span><span>Educational Analytics</span><span>Optimization</span><span>Multimodal AI</span><span>Simulation</span></div>
+          </aside>
         </div>
+      </div>
+    </section>
 
-
-        <div class="card">
-
-            <div class="education-title">
-                <div>
-                    <h3>
-                        B.Sc. in Mathematics and Applications
-                    </h3>
-                </div>
-
-                <strong>2019 – 2023</strong>
-            </div>
-
-            <p class="gpa">
-                GPA: 18.05 / 20 &nbsp; • &nbsp; 3.8 / 4.0
-            </p>
-
-            <p class="course-list">
-                Selected Coursework:
-                Fundamentals of Computer and Programming,
-                Data Mining,
-                Linear Optimization,
-                Database and Algorithms,
-                Fundamentals of Information Technology,
-                Nonlinear Optimization,
-                Artificial Intelligence,
-                Advanced Programming
-            </p>
-
+    <section id="education">
+      <div class="container">
+        <div class="section-top"><span class="section-label"><span class="number">02 /</span> Academic journey</span><h2>Education<span style="color:var(--accent)">.</span></h2></div>
+        <div class="education-grid">
+          <article class="education-card">
+            <div class="card-kicker"><span>Graduate degree</span><time>2025 – Present</time></div>
+            <h3>M.S. in Electrical and Computer Engineering</h3><p class="university">University of Arizona</p>
+            <div class="education-bottom"><span class="gpa-badge"><strong>4.0 / 4.0</strong><small>GPA</small></span></div>
+            <div class="coursework"><strong>Selected coursework</strong><p>Introduction to Artificial Intelligence · Data Management · Web Development and IoT · Introduction to Deep Learning · Engineering Applications of Machine Learning and Data Analytics</p></div>
+          </article>
+          <article class="education-card">
+            <div class="card-kicker"><span>Undergraduate degree</span><time>2019 – 2023</time></div>
+            <h3>B.Sc. in Mathematics and Applications</h3><p class="university">Mathematics</p>
+            <div class="education-bottom"><span class="gpa-badge"><strong>18.05 / 20</strong><small>GPA · 3.8 / 4.0</small></span></div>
+            <div class="coursework"><strong>Selected coursework</strong><p>Fundamentals of Computer and Programming · Data Mining · Linear Optimization · Database and Algorithms · Fundamentals of Information Technology · Nonlinear Optimization · Artificial Intelligence · Advanced Programming</p></div>
+          </article>
         </div>
+      </div>
+    </section>
 
-    </div>
-
-</section>
-
-
-<!-- EXPERIENCE -->
-
-<section id="experience">
-
-    <div class="container">
-
-        <h2 class="section-title">Research & Academic Experience</h2>
-
-
-        <div class="card">
-            <h3>Graduate Research Assistant</h3>
-            <h4>University of Arizona</h4>
-            <div class="date">January 2025 – Present</div>
-
-            <p>
-                Conducting research in data-driven curriculum analytics,
-                simulation, student success analysis, machine learning,
-                and related computational methods.
-            </p>
+    <section id="experience">
+      <div class="container">
+        <div class="section-top"><span class="section-label"><span class="number">03 /</span> Research &amp; teaching</span><h2>Experience<span style="color:var(--accent)">.</span></h2></div>
+        <div class="experience-layout">
+          <article class="experience-main"><div class="card-kicker"><span>Current position</span><time>Jan 2025 – Present</time></div><h3>Graduate Research Assistant</h3><h4>University of Arizona</h4><p>Conducting research in data-driven curriculum analytics, simulation, student success analysis, machine learning, and related computational methods.</p><span class="big-chevron" aria-hidden="true">↗</span></article>
+          <div class="experience-list">
+            <div class="experience-item"><h3>Teaching Assistant — Linear Optimization</h3><time>Feb – Jul 2023</time></div>
+            <div class="experience-item"><h3>Teaching Assistant — Fundamentals of Computer and Programming</h3><time>Oct 2022 – Jan 2023</time></div>
+            <div class="experience-item"><h3>Academic Publication Team — Mathematics Publication</h3><time>Feb 2022 – Dec 2023</time></div>
+            <div class="experience-item"><h3>Academic Publication Team — Statistics Publication</h3><time>Aug – Dec 2022</time></div>
+            <div class="experience-item"><h3>Executive Board Member — Society of Robotics</h3><time>Sep 2022 – Apr 2023</time></div>
+          </div>
         </div>
+      </div>
+    </section>
 
-
-        <div class="card">
-            <h3>Teaching Assistant — Linear Optimization</h3>
-            <div class="date">February 2023 – July 2023</div>
+    <section id="publications">
+      <div class="container">
+        <div class="section-top"><span class="section-label"><span class="number">04 /</span> Scholarly work</span><div><h2>Publications<span style="color:var(--accent)">.</span></h2><p class="section-description">Contributions to research and tools that make academic data more useful and actionable.</p></div></div>
+        <div class="publication-grid">
+          <article class="publication-card"><span class="publication-tag">ASEE · 2026</span><h3>Visualizing Complexity in Curricula through Data-Driven Analytics</h3><span class="pub-venue">ASEE Annual Conference &amp; Exposition 2026</span><p>Developed a data-driven curriculum analytics framework integrating prerequisite structure, DFW rates, fill rates, course availability, and enrollment pressure to identify curricular bottlenecks and support academic decision-making.</p><div class="pub-foot">Author and Presenter</div></article>
+          <article class="publication-card"><span class="publication-tag">ASEE · 2026</span><h3>The Ranked Analysis of Major Programs System (RAMPS)</h3><span class="pub-venue">ASEE Annual Conference &amp; Exposition 2026</span><p>Contributed to a student-facing advising and degree-analysis platform that compares current and prospective majors using requirement-level progress analytics to support informed major-change decisions.</p><div class="pub-foot">Research contribution</div></article>
         </div>
+      </div>
+    </section>
 
-
-        <div class="card">
-            <h3>
-                Teaching Assistant — Fundamentals of Computer and Programming
-            </h3>
-            <div class="date">October 2022 – January 2023</div>
-        </div>
-
-
-        <div class="card">
-            <h3>Academic Publication Team — Mathematics Publication</h3>
-            <div class="date">February 2022 – December 2023</div>
-        </div>
-
-
-        <div class="card">
-            <h3>Academic Publication Team — Statistics Publication</h3>
-            <div class="date">August 2022 – December 2022</div>
-        </div>
-
-
-        <div class="card">
-            <h3>Member — Society of Robotics</h3>
-            <div class="date">September 2022 – April 2023</div>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- PUBLICATIONS -->
-
-<section id="publications">
-
-    <div class="container">
-
-        <h2 class="section-title">Publications</h2>
-
-        <div class="card">
-
-            <h3>
-                Visualizing Complexity in Curricula through
-                Data-Driven Analytics
-            </h3>
-
-            <h4>
-                ASEE Annual Conference & Exposition 2026
-            </h4>
-
-            <div class="date">
-                Author and Presenter
-            </div>
-
-            <p>
-                Developed a data-driven curriculum analytics framework
-                integrating prerequisite structure, DFW rates, fill rates,
-                course availability, and enrollment pressure to identify
-                curricular bottlenecks and support academic decision-making.
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <h3>
-                The Ranked Analysis of Major Programs System (RAMPS)
-            </h3>
-
-            <h4>
-                ASEE Annual Conference & Exposition 2026
-            </h4>
-
-            <p>
-                Contributed to a student-facing advising and degree-analysis
-                platform that compares current and prospective majors using
-                requirement-level progress analytics to support informed
-                major-change decisions.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- PROJECTS -->
-
-<section id="projects">
-
-    <div class="container">
-
-        <h2 class="section-title">Selected Projects</h2>
-
-        <p class="section-intro">
-            Selected work in machine learning, computer vision,
-            data analytics, IoT, and software development.
-        </p>
-
-
+    <section id="projects">
+      <div class="container">
+        <div class="section-top"><span class="section-label"><span class="number">05 /</span> Portfolio</span><div><h2>Selected <em>projects.</em></h2><p class="section-description">Work across machine learning, computer vision, data analytics, IoT, and software engineering.</p></div></div>
         <div class="project-grid">
-
-
-            <div class="card project-card">
-
-                <h3>
-                    Long-Range Small UAV Detection on Edge-Compatible CNN
-                </h3>
-
-                <div class="project-tech">
-                    Python • YOLOv8 • Ultralytics • OpenCV • HPC/SLURM
-                </div>
-
-                <p>
-                    Built and evaluated a lightweight YOLOv8-Nano pipeline
-                    for long-range UAV detection, exploring tiny-object
-                    detection heads, stronger feature extraction,
-                    and attention modules.
-                </p>
-
-            </div>
-
-
-            <div class="card project-card">
-
-                <h3>
-                    Course Performance and Student Retention Analysis
-                </h3>
-
-                <div class="project-tech">
-                    Julia • Statistics • Educational Data Analytics
-                </div>
-
-                <p>
-                    Analyzed how performance in early college courses relates
-                    to year-to-year retention using statistical models to
-                    identify high-impact courses and estimate adjusted
-                    retention outcomes.
-                </p>
-
-            </div>
-
-
-            <div class="card project-card">
-
-                <h3>
-                    Uncertainty-Aware Multi-Caption Weighting for Robust BLIP
-                    Fine-Tuning
-                </h3>
-
-                <div class="project-tech">
-                    Python • PyTorch • BLIP • Transformers
-                </div>
-
-                <p>
-                    Developed a confidence-based caption-weighting method
-                    for robust BLIP fine-tuning on noisy image-caption data
-                    using alignment, fluency, and agreement signals.
-                </p>
-
-            </div>
-
-
-            <div class="card project-card">
-
-                <h3>Beat Buddy</h3>
-
-                <div class="project-tech">
-                    JavaScript • HTML • CSS • C++ • IoT
-                </div>
-
-                <p>
-                    Built a low-cost IoT system for monitoring heart rate
-                    and blood oxygen levels using a Particle Photon,
-                    MAX30102 sensor, responsive web application,
-                    Node.js backend, and MongoDB.
-                </p>
-
-            </div>
-
-
-            <div class="card project-card">
-
-                <h3>Steganography and Security</h3>
-
-                <div class="project-tech">
-                    Python • OpenCV • QtPy • PIL • NumPy
-                </div>
-
-                <p>
-                    Developed an LSB-based steganography application for
-                    hiding text or images inside another image with a
-                    graphical QtPy interface.
-                </p>
-
-            </div>
-
-
-            <div class="card project-card">
-
-                <h3>FOODIE</h3>
-
-                <div class="project-tech">
-                    Python • Simulation
-                </div>
-
-                <p>
-                    Created an autonomous campus food-delivery simulation
-                    featuring robot batching, real-time visualization,
-                    and performance tracking.
-                </p>
-              
-            </div>
-
-
-            <div class="card project-card">
-
-                <h3>Computer Vision Data Annotation</h3>
-
-                <div class="project-tech">
-                    Python • SQL • Computer Vision
-                </div>
-
-                <p>
-                    Built a toolkit to transform computer-vision datasets
-                    such as PASCAL VOC, COCO, and Open Images into a compact
-                    SQLite database for exploration, training-data curation,
-                    and experiment reproducibility.
-                </p>
-
-
-            </div>
-
-
-            <div class="card project-card">
-
-                <h3>Retrieval-Augmented Generation (RAG)</h3>
-
-                <div class="project-tech">
-                    Python • Jupyter • LLMs • Vector Retrieval
-                </div>
-
-                <p>
-                    Implemented a retrieval-augmented generation pipeline
-                    combining vector retrieval with a language model to
-                    improve responses using relevant external documents.
-                </p>
-
-            </div>
-
-
-            <div class="card project-card">
-
-                <h3>KNN Classification of Rice Samples</h3>
-
-                <div class="project-tech">
-                    Python • NumPy • Pandas • Machine Learning
-                </div>
-
-                <p>
-                    Implemented a K-nearest neighbors classifier for rice
-                    samples based on similarity to labeled training data.
-                </p>
-
-            </div>
-
-
-            <div class="card project-card">
-
-                <h3>Restaurant Reservation Simulator</h3>
-
-                <div class="project-tech">
-                    Java • Object-Oriented Programming
-                </div>
-
-                <p>
-                    Developed an online restaurant system supporting customer
-                    and seller accounts, reservations, food search,
-                    profiles, addresses, and invoice management.
-                </p>
-
-
-            </div>
-
-
-            <div class="card project-card">
-
-                <h3>Electronic Store</h3>
-
-                <div class="project-tech">
-                    Java • Object-Oriented Programming
-                </div>
-
-                <p>
-                    Created an electronic-store system for product search,
-                    availability checking, and customer invoice management.
-                </p>
-
-            </div>
-
-
+          <article class="project-card featured"><div class="project-upper"><span class="project-number">PROJECT / 01</span><span class="project-category">Computer vision</span></div><h3>Long-Range Small UAV Detection on Edge-Compatible CNN</h3><p>Built and evaluated a lightweight YOLOv8-Nano pipeline for long-range UAV detection, exploring tiny-object detection heads, stronger feature extraction, and attention modules.</p><div class="tech-tags"><span>Python</span><span>YOLOv8</span><span>Ultralytics</span><span>OpenCV</span><span>HPC / SLURM</span></div></article>
+          <article class="project-card featured"><div class="project-upper"><span class="project-number">PROJECT / 02</span><span class="project-category">Data science</span></div><h3>Course Performance and Student Retention Analysis</h3><p>Analyzed how performance in early college courses relates to year-to-year retention using statistical models to identify high-impact courses and estimate adjusted retention outcomes.</p><div class="tech-tags"><span>Julia</span><span>Statistics</span><span>Educational Data Analytics</span></div></article>
+          <article class="project-card"><div class="project-upper"><span class="project-number">PROJECT / 03</span><span class="project-category">Multimodal AI</span></div><h3>Uncertainty-Aware Multi-Caption Weighting for Robust BLIP Fine-Tuning</h3><p>Developed a confidence-based caption-weighting method for robust BLIP fine-tuning on noisy image-caption data using alignment, fluency, and agreement signals.</p><div class="tech-tags"><span>Python</span><span>PyTorch</span><span>BLIP</span><span>Transformers</span></div></article>
+          <article class="project-card"><div class="project-upper"><span class="project-number">PROJECT / 04</span><span class="project-category">IoT</span></div><h3>Beat Buddy</h3><p>Built a low-cost IoT system for monitoring heart rate and blood oxygen levels using a Particle Photon, MAX30102 sensor, responsive web application, Node.js backend, and MongoDB.</p><div class="tech-tags"><span>JavaScript</span><span>HTML / CSS</span><span>C++</span><span>IoT</span></div></article>
+          <article class="project-card"><div class="project-upper"><span class="project-number">PROJECT / 05</span><span class="project-category">Security</span></div><h3>Steganography and Security</h3><p>Developed an LSB-based steganography application for hiding text or images inside another image with a graphical QtPy interface.</p><div class="tech-tags"><span>Python</span><span>OpenCV</span><span>QtPy</span><span>PIL</span><span>NumPy</span></div></article>
+          <article class="project-card"><div class="project-upper"><span class="project-number">PROJECT / 06</span><span class="project-category">Simulation</span></div><h3>FOODIE</h3><p>Created an autonomous campus food-delivery simulation featuring robot batching, real-time visualization, and performance tracking.</p><div class="tech-tags"><span>Python</span><span>Simulation</span></div></article>
+          <article class="project-card"><div class="project-upper"><span class="project-number">PROJECT / 07</span><span class="project-category">Data engineering</span></div><h3>Computer Vision Data Annotation</h3><p>Built a toolkit to transform computer-vision datasets such as PASCAL VOC, COCO, and Open Images into a compact SQLite database for exploration, training-data curation, and experiment reproducibility.</p><div class="tech-tags"><span>Python</span><span>SQL</span><span>Computer Vision</span></div></article>
+          <article class="project-card"><div class="project-upper"><span class="project-number">PROJECT / 08</span><span class="project-category">Language models</span></div><h3>Retrieval-Augmented Generation (RAG)</h3><p>Implemented a retrieval-augmented generation pipeline combining vector retrieval with a language model to improve responses using relevant external documents.</p><div class="tech-tags"><span>Python</span><span>Jupyter</span><span>LLMs</span><span>Vector Retrieval</span></div></article>
+          <article class="project-card"><div class="project-upper"><span class="project-number">PROJECT / 09</span><span class="project-category">Machine learning</span></div><h3>KNN Classification of Rice Samples</h3><p>Implemented a K-nearest neighbors classifier for rice samples based on similarity to labeled training data.</p><div class="tech-tags"><span>Python</span><span>NumPy</span><span>Pandas</span><span>Machine Learning</span></div></article>
+          <article class="project-card"><div class="project-upper"><span class="project-number">PROJECT / 10</span><span class="project-category">Software development</span></div><h3>Restaurant Reservation Simulator</h3><p>Developed an online restaurant system supporting customer and seller accounts, reservations, food search, profiles, addresses, and invoice management.</p><div class="tech-tags"><span>Java</span><span>Object-Oriented Programming</span></div></article>
+          <article class="project-card"><div class="project-upper"><span class="project-number">PROJECT / 11</span><span class="project-category">Software development</span></div><h3>Electronic Store</h3><p>Created an electronic-store system for product search, availability checking, and customer invoice management.</p><div class="tech-tags"><span>Java</span><span>Object-Oriented Programming</span></div></article>
         </div>
+      </div>
+    </section>
 
-    </div>
-
-</section>
-
-
-<!-- SKILLS -->
-
-<section id="skills">
-
-    <div class="container">
-
-        <h2 class="section-title">Technical Skills</h2>
-
-
+    <section id="skills">
+      <div class="container">
+        <div class="section-top"><span class="section-label"><span class="number">06 /</span> Toolkit</span><h2>Technical <em>skills.</em></h2></div>
         <div class="skills-grid">
-
-            <div class="skill-box">
-
-                <h3>Programming Languages</h3>
-
-                <p>
-                    Python, Julia, Java, C/C++, R, MATLAB, SQL
-                </p>
-
-            </div>
-
-
-            <div class="skill-box">
-
-                <h3>Machine Learning & AI</h3>
-
-                <p>
-                    PyTorch, Hugging Face Transformers, scikit-learn,
-                    YOLOv8, BLIP, CLIP, OpenCV
-                </p>
-
-            </div>
-
-
-            <div class="skill-box">
-
-                <h3>Data & Computing</h3>
-
-                <p>
-                    NumPy, Pandas, Jupyter, MySQL, Linux
-                </p>
-
-            </div>
-
-
-            <div class="skill-box">
-
-                <h3>Web Development</h3>
-
-                <p>
-                    JavaScript, Vue.js, HTML5, CSS3
-                </p>
-
-            </div>
-
-
-            <div class="skill-box">
-
-                <h3>Development Tools</h3>
-
-                <p>
-                    Git, GitHub, VS Code
-                </p>
-
-            </div>
-
-
-            <div class="skill-box">
-
-                <h3>Embedded & Engineering Tools</h3>
-
-                <p>
-                    Arduino, Proteus
-                </p>
-
-            </div>
-
+          <div class="skill-box"><span class="skill-icon" aria-hidden="true">⌘</span><h3>Programming Languages</h3><p>Python, Julia, Java, C/C++, R, MATLAB, SQL</p></div>
+          <div class="skill-box"><span class="skill-icon" aria-hidden="true">◈</span><h3>Machine Learning &amp; AI</h3><p>PyTorch, Hugging Face Transformers, scikit-learn, YOLOv8, BLIP, CLIP, OpenCV</p></div>
+          <div class="skill-box"><span class="skill-icon" aria-hidden="true">▦</span><h3>Data &amp; Computing</h3><p>NumPy, Pandas, Jupyter, MySQL, Linux</p></div>
+          <div class="skill-box"><span class="skill-icon" aria-hidden="true">⌁</span><h3>Web Development</h3><p>JavaScript, Vue.js, HTML5, CSS3</p></div>
+          <div class="skill-box"><span class="skill-icon" aria-hidden="true">◇</span><h3>Development Tools</h3><p>Git, GitHub, VS Code</p></div>
+          <div class="skill-box"><span class="skill-icon" aria-hidden="true">⚙</span><h3>Embedded &amp; Engineering Tools</h3><p>Arduino, Proteus</p></div>
         </div>
+      </div>
+    </section>
 
-    </div>
-
-</section>
-
-
-<!-- AWARDS -->
-
-<section id="awards">
-
-    <div class="container">
-
-        <h2 class="section-title">Awards & Honors</h2>
-
-
-        <div class="award">
-            <div class="award-year">2026</div>
-            <div>
-                Honorable Mention — AI Ignite Showcase,
-                University of Arizona
-            </div>
+    <section id="awards">
+      <div class="container">
+        <div class="section-top"><span class="section-label"><span class="number">07 /</span> Recognition</span><h2>Awards &amp; <em>honors.</em></h2></div>
+        <div class="awards-list">
+          <div class="award"><span class="award-year">2026</span><span class="award-description">Honorable Mention — AI Ignite Showcase, University of Arizona</span><span class="award-symbol" aria-hidden="true">↗</span></div>
+          <div class="award"><span class="award-year">2023</span><span class="award-description">Ranked within the top 4% of my class in the Mathematics Department</span><span class="award-symbol" aria-hidden="true">↗</span></div>
+          <div class="award"><span class="award-year">2023</span><span class="award-description">Ranked 2nd among all semesters in the department</span><span class="award-symbol" aria-hidden="true">↗</span></div>
+          <div class="award"><span class="award-year">2019</span><span class="award-description">Ranked in the top 0.3% among applicants in the University Entrance Examination</span><span class="award-symbol" aria-hidden="true">↗</span></div>
+          <div class="award"><span class="award-year">2018</span><span class="award-description">Graduated as high school valedictorian with a GPA of 19.08 / 20</span><span class="award-symbol" aria-hidden="true">↗</span></div>
+          <div class="award"><span class="award-year">2018</span><span class="award-description">First Place — RoboCup International Competitions</span><span class="award-symbol" aria-hidden="true">↗</span></div>
+          <div class="award"><span class="award-year">2017</span><span class="award-description">Second Place — RoboCup International Competitions</span><span class="award-symbol" aria-hidden="true">↗</span></div>
+          <div class="award"><span class="award-year">2017</span><span class="award-description">Nominated to participate in the RoboCup Asia-Pacific Junior Soccer Open League</span><span class="award-symbol" aria-hidden="true">↗</span></div>
+          <div class="award"><span class="award-year">2016</span><span class="award-description">Second Place — RoboCup International Competitions</span><span class="award-symbol" aria-hidden="true">↗</span></div>
         </div>
+      </div>
+    </section>
 
+    <section id="languages">
+      <div class="container">
+        <div class="section-top"><span class="section-label"><span class="number">08 /</span> Communication</span><h2>Languages<span style="color:var(--accent)">.</span></h2></div>
+        <div class="language-grid"><div class="language-card"><h3>Persian</h3><span>Native</span></div><div class="language-card"><h3>English</h3><span>Advanced</span></div></div>
+      </div>
+    </section>
+  </main>
 
-        <div class="award">
-            <div class="award-year">2023</div>
-            <div>
-                Ranked within the top 4% of my class in the
-                Mathematics Department
-            </div>
-        </div>
+  <footer class="site-footer"><div class="container"><div class="footer-top"><div><span class="eyebrow">Research &amp; Portfolio</span><h2> <br><em> </em></h2></div><a class="btn btn-primary" href="https://github.com/xhpmoonx" target="_blank" rel="noopener noreferrer">Visit GitHub <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div><div class="footer-bottom"><span>© 2026 Mahshad Akbarsharifi. All rights reserved.</span><span>Personal academic website · University of Arizona</span><a href="#top">Back to top ↑</a></div></div></footer>
 
-
-        <div class="award">
-            <div class="award-year">2023</div>
-            <div>
-                Ranked 2nd among all semesters in the department
-            </div>
-        </div>
-
-
-
-
-        <div class="award">
-            <div class="award-year">2019</div>
-            <div>
-                Ranked in the top 0.3% among applicants in the
-                University Entrance Examination
-            </div>
-        </div>
-
-
-        <div class="award">
-            <div class="award-year">2018</div>
-            <div>
-                Graduated as high school valedictorian with a GPA
-                of 19.08 / 20
-            </div>
-        </div>
-
-
-        <div class="award">
-            <div class="award-year">2018</div>
-            <div>
-                First Place — RoboCup International Competitions
-            </div>
-        </div>
-
-
-        <div class="award">
-            <div class="award-year">2017</div>
-            <div>
-                Second Place — RoboCup International Competitions
-            </div>
-        </div>
-
-
-        <div class="award">
-            <div class="award-year">2017</div>
-            <div>
-                Nominated to participate in the RoboCup Asia-Pacific
-                Junior Soccer Open League
-            </div>
-        </div>
-
-
-
-
-        <div class="award">
-            <div class="award-year">2016</div>
-            <div>
-                Second Place — RoboCup International Competitions
-            </div>
-        </div>
-
-
-    </div>
-
-</section>
-
-
-<!-- LANGUAGES -->
-
-<section id="languages">
-
-    <div class="container">
-
-        <h2 class="section-title">Languages</h2>
-
-        <div class="card">
-
-            <h3>Persian</h3>
-            <p>Native</p>
-
-        </div>
-
-
-        <div class="card">
-
-            <h3>English</h3>
-            <p>Advanced</p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- FOOTER -->
-
-<footer>
-
-    <div class="container">
-
-        <p>
-            © 2026 Mahshad Akbarsharifi
-        </p>
-
-        <p>
-            <a href="https://github.com/xhpmoonx" target="_blank">
-                GitHub
-            </a>
-
-        </p>
-
-    </div>
-
-</footer>
-
-
+  <script>
+    const menuButton = document.querySelector('.menu-button');
+    const navLinks = document.querySelector('.nav-links');
+    menuButton.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('is-open');
+      menuButton.setAttribute('aria-expanded', String(open));
+      menuButton.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+    });
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navLinks.classList.remove('is-open');
+      menuButton.setAttribute('aria-expanded', 'false');
+      menuButton.setAttribute('aria-label', 'Open navigation menu');
+    }));
+  </script>
 </body>
 </html>
